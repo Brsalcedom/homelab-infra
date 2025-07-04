@@ -44,13 +44,6 @@ variable "traefik_acme_email" {
   type        = string
 }
 
-variable "cert_manager_crds_url" {
-  description = "URL to the cert-manager CRDs YAML file"
-  type        = string
-  default     = "https://github.com/cert-manager/cert-manager/releases/download/v1.18.1/cert-manager.crds.yaml"
-
-}
-
 variable "cert_manager_namespace" {
   description = "Namespace for the cert-manager release"
   type        = string
