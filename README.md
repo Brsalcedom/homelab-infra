@@ -28,9 +28,6 @@ Este repositorio contiene la infraestructura base para un homelab autogestionado
         ├── main.tf
         ├── outputs.tf
         ├── providers.tf
-        ├── terraform.tfstate
-        ├── terraform.tfstate.backup
-        ├── terraform.tfvars
         ├── variables.tf
         └── versions.tf
 └── proxmox
