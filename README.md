@@ -33,10 +33,26 @@ Este repositorio contiene la infraestructura base para un homelab autogestionado
         ├── terraform.tfvars
         ├── variables.tf
         └── versions.tf
+└── proxmox
+    └── vm
+        ├── environments
+        │   └── ansible
+        │       ├── main.tf
+        │       ├── outputs.tf
+        │       ├── providers.tf
+        │       ├── variables.tf
+        │       └── versions.tf
+        └── modules
+            └── cloud-init
+                ├── main.tf
+                ├── outputs.tf
+                ├── variables.tf
+                └── versions.tf
 ```
 
 ## 📦 Subproyectos principales
 - [k8s/ingress-controller](./k8s/ingress-controller/README.md): Infraestructura básica del clúster Kubernetes, enfocada en instalar lo básico para desplegar aplicaciones de forma segura y escalable. Incluye módulos para MetalLB, Traefik, cert-manager y ArgoCD.
+- [proxmox/vm](./proxmox/README.md): Automatización de la provisión de máquinas virtuales en Proxmox usando Terraform y cloud-init. Permite crear entornos reproducibles para herramientas como Ansible, runners de CI/CD, o nodos de Kubernetes, con generación automática de claves SSH y configuración personalizada de red, usuario y paquetes.
 
 
 ## 🚀 ¿Cómo empezar?

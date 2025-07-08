@@ -7,7 +7,7 @@ Este directorio contiene la configuración principal de infraestructura para lev
 - Cert-Manager: para certificados TLS con Let's Encrypt.
 - ArgoCD: para gestión GitOps aplicaciones.
 
-## 🧱 Estructura de la carpeta
+## 🧱 Estructura de directorios
 
 ```plaintext
 k8s/ingress-controller/
