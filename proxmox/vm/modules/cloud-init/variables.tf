@@ -1,13 +1,3 @@
-variable "proxmox_endpoint" {
-  description = "Proxmox API endpoint"
-  type        = string
-}
-
-variable "proxmox_api_token" {
-  description = "Proxmox API token in the format user@realm!token=uuid"
-  type        = string
-}
-
 variable "vm_name" {
   description = "Name of the VM"
   type        = string
