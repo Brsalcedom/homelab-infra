@@ -33,14 +33,14 @@ resource "kubectl_manifest" "argocd_httproute" {
     kind: HTTPRoute
     metadata:
       name: argocd-route
-      namespace: argocd
+      namespace: ${var.namespace}
     spec:
       parentRefs:
         - name: nginx-gateway
-          namespace: nginx
+          namespace: ${var.gateway_namespace}
           sectionName: "https"
       hostnames:
-      - "argocd.home.cervant.net"
+      - ${var.fqdn}
       rules:
       - matches:
           - path:
@@ -59,14 +59,14 @@ resource "kubectl_manifest" "argocd_httproute_redirect" {
     kind: HTTPRoute
     metadata:
       name: argocd-redirect-route
-      namespace: argocd
+      namespace: ${var.namespace}
     spec:
       parentRefs:
         - name: nginx-gateway
-          namespace: nginx
+          namespace: ${var.gateway_namespace}
           sectionName: "http"
       hostnames:
-      - "argocd.home.cervant.net"
+      - ${var.fqdn}
       rules:
       - matches:
           - path:

@@ -1,6 +1,6 @@
 output "nginx_version" {
   description = "Nginx Gateway Fabric version installed"
-  value       = module.nginx.release_version
+  value       = module.nginx_gateway.release_version
 }
 
 output "cert_manager_version" {

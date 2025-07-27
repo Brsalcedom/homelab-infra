@@ -30,7 +30,7 @@ variable "metallb_ip_range" {
 variable "nginx_namespace" {
   description = "Namespace for the Nginx ingress controller"
   type        = string
-  default     = "nginx"
+  default     = "nginx-gateway"
 }
 
 variable "nginx_version" {
@@ -81,6 +81,11 @@ variable "argocd_version" {
 
 variable "argocd_fqdn" {
   description = "Fully qualified domain name for the ArgoCD web interface"
+  type        = string
+}
+
+variable "base_domain" {
+  description = "Base domain for the gateway"
   type        = string
 }
 

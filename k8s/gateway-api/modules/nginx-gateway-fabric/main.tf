@@ -14,7 +14,7 @@ resource "helm_release" "nginx_gateway_fabric" {
   set = [
     {
       name  = "controller.replicaCount"
-      value = "1"
+      value = "2"
     }
   ]
   depends_on = [null_resource.install_gateway_api_crds]
@@ -34,7 +34,7 @@ resource "kubectl_manifest" "gateway" {
         - name: https
           protocol: HTTPS
           port: 443
-          hostname: "*.home.cervant.net"
+          hostname: "*.${var.base_domain}"
           tls:
             mode: Terminate
             certificateRefs:
@@ -47,7 +47,7 @@ resource "kubectl_manifest" "gateway" {
         - name: http
           protocol: HTTP
           port: 80
-          hostname: "*.home.cervant.net"
+          hostname: "*.${var.base_domain}"
           allowedRoutes:
             namespaces:
               from: All
@@ -68,9 +68,9 @@ resource "kubectl_manifest" "certificate" {
       issuerRef:
         name: ${var.issuer_name}
         kind: ClusterIssuer
-      commonName: "*.home.cervant.net"
+      commonName: "*.${var.base_domain}"
       dnsNames:
-        - "*.home.cervant.net"
+        - "*.${var.base_domain}"
 YAML
   depends_on = [helm_release.nginx_gateway_fabric]
 }

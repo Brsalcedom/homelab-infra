@@ -23,12 +23,13 @@ module "nginx_namespace" {
   name   = var.nginx_namespace
 }
 
-module "nginx" {
+module "nginx_gateway" {
   source               = "./modules/nginx-gateway-fabric"
   namespace            = var.nginx_namespace
   chart_version        = var.nginx_version
   gateway_api_crds_url = var.gateway_api_crds_url
   issuer_name          = var.cert_manager_issuer
+  base_domain          = var.base_domain
 
   depends_on = [module.nginx_namespace]
 }
@@ -55,12 +56,13 @@ module "argocd_namespace" {
 }
 
 module "argocd" {
-  source        = "./modules/argocd"
-  namespace     = var.argocd_namespace
-  chart_version = var.argocd_version
-  fqdn          = var.argocd_fqdn
+  source            = "./modules/argocd"
+  namespace         = var.argocd_namespace
+  chart_version     = var.argocd_version
+  fqdn              = var.argocd_fqdn
+  gateway_namespace = var.nginx_namespace
 
   depends_on = [module.argocd_namespace,
     module.cert_manager,
-  module.nginx]
+  module.nginx_gateway]
 }

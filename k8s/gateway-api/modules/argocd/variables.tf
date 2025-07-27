@@ -13,3 +13,8 @@ variable "fqdn" {
   description = "Fully qualified domain name for the ArgoCD web interface"
   type        = string
 }
+
+variable "gateway_namespace" {
+  description = "Namespace where the Nginx gateway is installed"
+  type        = string
+}
