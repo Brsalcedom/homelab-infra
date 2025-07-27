@@ -27,21 +27,16 @@ variable "metallb_ip_range" {
   type        = string
 }
 
-variable "traefik_namespace" {
-  description = "Namespace for the Traefik ingress controller"
+variable "nginx_namespace" {
+  description = "Namespace for the Nginx ingress controller"
   type        = string
-  default     = "traefik"
+  default     = "nginx"
 }
 
-variable "traefik_version" {
-  description = "Version of the Traefik Helm chart"
+variable "nginx_version" {
+  description = "Version of the Nginx Helm chart"
   type        = string
-  default     = "v36.1.0"
-}
-
-variable "traefik_acme_email" {
-  description = "Email address for ACME registration with Traefik"
-  type        = string
+  default     = "2.0.2"
 }
 
 variable "cert_manager_namespace" {
@@ -57,7 +52,7 @@ variable "cert_manager_version" {
 }
 
 variable "cert_manager_issuer" {
-  description = "Cluster issuer name for cert-manager to use with Traefik"
+  description = "Cluster issuer name for cert-manager to use with Nginx"
   type        = string
   default     = "cloudflare-clusterissuer"
 }
@@ -89,8 +84,8 @@ variable "argocd_fqdn" {
   type        = string
 }
 
-variable "traefik_entrypoint" {
-  description = "Traefik entrypoint to use for ArgoCD"
+variable "gateway_api_crds_url" {
+  description = "URL for Gateway API CRDs"
   type        = string
-  default     = "websecure"
+  default     = "https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.3.0/standard-install.yaml"
 }
